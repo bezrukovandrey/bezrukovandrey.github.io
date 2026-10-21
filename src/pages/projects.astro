@@ -1,0 +1,154 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+
+interface Project {
+  title: string;
+  description: string;
+  url: string;
+  liveUrl?: string;
+}
+
+interface ProjectGroup {
+  title: string;
+  projects: Project[];
+}
+
+const projectGroups: ProjectGroup[] = [
+  {
+    title: "AI & Data Science",
+    projects: [
+      {
+        title: "Sustainable AI Experiments",
+        description:
+          "Compared rule-based, TF-IDF, neural, and transformer approaches for text categorization and course recommendations, measuring task performance and computational cost.",
+        url: "https://github.com/bezrukovandrey/sustainable-ai-experiments",
+      },
+      {
+        title: "COMPAS Data Science",
+        description:
+          "Analyzed recidivism data, compared classifier performance, and investigated demographic disparities using fairness metrics.",
+        url: "https://github.com/bezrukovandrey/compas-datascience",
+      },
+      {
+        title: "AI Coursework",
+        description:
+          "Selected coursework in supervised classification (including SVMs), clustering, microbiome-data classification, RNN/LSTM time-series forecasting, and symbolic AI.",
+        url: "https://github.com/bezrukovandrey/ai-coursework",
+      },
+    ],
+  },
+  {
+    title: "Graphics & Visualization",
+    projects: [
+      {
+        title: "Mipmap Filtering",
+        description:
+          "Built a Python rendering pipeline and explored texture mapping, mipmap generation, and filtering techniques including nearest, bilinear, trilinear, and anisotropic sampling.",
+        url: "https://github.com/bezrukovandrey/mipmap-project",
+      },
+      {
+        title: "Computer Graphics Practicals",
+        description:
+          "Selected practicals on mesh processing, surface smoothing, curvature, and mesh parametrization.",
+        url: "https://github.com/bezrukovandrey/computer-graphics",
+      },
+      {
+        title: "Visual Computing",
+        description:
+          "Practical work in 3D point projection and image processing.",
+        url: "https://github.com/bezrukovandrey/visual-computing",
+      },
+    ],
+  },
+  {
+    title: "Web, HCI & Social Impact",
+    projects: [
+      {
+        title: "WiseNourish",
+        description:
+          "Designed and built a nutrition web app for exploring food, comparing nutrition, planning meals, and learning through quizzes.",
+        url: "https://github.com/bezrukovandrey/nutrition-web",
+        liveUrl: "https://wisenourish.vercel.app/",
+      },
+      {
+        title: "Break the Glass Ceiling",
+        description:
+          "Website for an international initiative supporting women's access to employment and education, with information, publications, events, and volunteer stories.",
+        url: "https://github.com/bezrukovandrey/break-the-glass-ceiling",
+        liveUrl: "https://www.womenvolunteers.eu/",
+      },
+      {
+        title: "Duck Crossing",
+        description: "A playful designer portfolio website.",
+        url: "https://github.com/bezrukovandrey/duck-crossing",
+      },
+    ],
+  },
+  {
+    title: "Others",
+    projects: [
+      {
+        title: "OS Memory Allocator",
+        description:
+          "Implemented a C memory allocator exploring first-fit, best-fit, worst-fit, and next-fit strategies.",
+        url: "https://github.com/bezrukovandrey/os-memory-allocator",
+      },
+    ],
+  },
+];
+---
+<Layout title="Projects">
+  <Nav />
+  <main class="space-y-12">
+    <p class="text-sm text-muted">
+      Selected projects from <a
+        href="https://github.com/bezrukovandrey"
+        target="_blank"
+        rel="noreferrer"
+        class="text-paper underline decoration-panel underline-offset-4 hover:decoration-accent"
+      >
+        my GitHub
+      </a>.
+    </p>
+
+    {projectGroups.map((group) => (
+      <section>
+        <h2 class="font-mono text-sm text-muted">{group.title}</h2>
+        <div class="mt-5 grid gap-4 sm:grid-cols-2">
+          {group.projects.map((project) => (
+            <article
+              class="group flex flex-col gap-2 rounded-sm border border-panel bg-panel/40 px-4 py-3 transition-all duration-150 ease-out hover:-translate-y-0.5 hover:border-accent/60 hover:shadow-[0_10px_24px_-14px_rgba(201,138,59,0.4)]"
+            >
+              <h3 class="break-words text-paper/90 transition-colors group-hover:text-paper">
+                {project.title}
+              </h3>
+              <p class="text-sm leading-relaxed text-muted">{project.description}</p>
+              <div class="mt-auto flex flex-wrap gap-x-4 gap-y-2 pt-2 font-mono text-xs">
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  class="text-accent underline decoration-panel underline-offset-4 hover:decoration-accent"
+                >
+                  GitHub ↗
+                </a>
+                {project.liveUrl && (
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    class="text-accent underline decoration-panel underline-offset-4 hover:decoration-accent"
+                  >
+                    Live website ↗
+                  </a>
+                )}
+              </div>
+            </article>
+            
+          ))}
+        </div>
+      </section>
+    ))}
+  </main>
+</Layout>

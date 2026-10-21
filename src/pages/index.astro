@@ -1,0 +1,85 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import { technicalSkills } from "../data/skills";
+import { Hobbies } from "../data/hobbies";
+import { languages } from "../data/languages";
+---
+<Layout title="Andrei Bezrukov">
+  <Nav />
+  <main class="space-y-16">
+    <section class="space-y-6 leading-relaxed text-paper/90">
+     <h2 class="font-mono text-sm">Applied AI · Sustainable ML · Human-Centered Technology</h2>
+      <p>
+       I'm an MSc Artificial Intelligence student at Université Grenoble Alpes (ENSIMAG) with research experience in NLP and model evaluation. I'm interested in understanding how AI systems can be made more efficient, useful and accessible, and how computational methods connect with the people who use them.
+
+My work spans applied machine learning, data science, computer graphics, and interactive web applications. I'm particularly interested in resource-efficient AI, human-AI interaction, visualization, and accessible technology.
+      </p>
+      <p>
+        Currently looking for 20+ week internship in AI/ML, HCI and visualization starting between
+February and March 2027. See the <a href="/cv" class="text-paper underline decoration-panel underline-offset-4 hover:decoration-accent">CV</a> for details and <a href="/projects" class="text-paper underline decoration-panel underline-offset-4 hover:decoration-accent">project history</a> for recent work.
+      </p>
+    </section>
+
+    <section class="space-y-6 leading-relaxed text-paper/90">
+     <h2 class="font-mono text-sm text-muted">Current interests</h2>
+     <p>I'm interested in how we can build technology that is not only technically effective, but also computationally efficient, understandable and useful to people. My interests span applied AI, human-computer interaction and visual computing, with a particular curiosity about the trade-offs between technical performance and real-world needs.</p>
+    <h3 class="font-mono text-sm text-muted underline">Resource-Efficient and Sustainable AI</h3>
+    <p>How much computational complexity does a task actually require? I'm interested in evaluating the trade-offs between model performance, inference time, memory consumption and computational cost. My research internship at LIG introduced me to the question of when simpler approaches can be viable alternatives to more resource-intensive models.</p>
+    <h3 class="font-mono text-sm text-muted underline">Applied Machine Learning and NLP</h3>
+    <p>I'm interested in practical applications of machine learning, particularly natural language processing. I enjoy comparing different approaches, from classical text-processing techniques to transformer-based models, and investigating how their performance changes across tasks and computational constraints.</p>
+    <h3 class="font-mono text-sm text-muted underline">Human-Computer Interaction and Human-Centered AI</h3>
+    <p>I care about how people interact with technology, how interfaces influence their understanding of a system, and how digital products can become more usable and accessible. I'm particularly interested in the intersection of HCI and AI: designing systems that people can understand, trust and use effectively.</p>
+    <h3 class="font-mono text-sm text-muted underline">Computer Graphics and Visualization</h3>
+    <p>Computer graphics interests me as a way to understand and manipulate visual information through algorithms. My coursework has introduced me to topics such as texture filtering, mesh processing and parametrization. I'm interested in how visual representations and interactive tools can help people explore complex information and better understand technical systems.</p>
+    </section>
+
+    <section>
+      <h2 class="font-mono text-sm text-muted">Technical Skills</h2>
+      <ul class="mt-5 grid gap-x-8 gap-y-3 sm:grid-cols-2">
+        {technicalSkills.map((skill) => (
+          <li class="flex items-baseline gap-3">
+            <span class="text-accent">—</span>
+            <span class="text-paper/90">{skill}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="font-mono text-sm text-muted">Languages</h2>
+      <div class="mt-5 space-y-5">
+        {languages.map((lang) => (
+          <div>
+            <div class="flex items-baseline justify-between">
+              <span class="text-paper/90">{lang.name}</span>
+              <span class="font-mono text-xs text-muted">{lang.level}</span>
+            </div>
+            <div
+              class="mt-2 h-1.5 w-full overflow-hidden bg-panel"
+              role="progressbar"
+              aria-label={`${lang.name} proficiency`}
+              aria-valuenow={lang.percent}
+              aria-valuemin="0"
+              aria-valuemax="100"
+            >
+              <div class="h-full bg-accent" style={`width: ${lang.percent}%`}></div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section>
+      <h2 class="font-mono text-sm text-muted">Hobbies & Interests</h2>
+      <ul class="mt-5 grid gap-x-8 gap-y-3 sm:grid-cols-2">
+        {Hobbies.map((hobby) => (
+          <li class="flex items-baseline gap-3">
+            <span class="text-accent">—</span>
+            <span class="text-paper/90">{hobby}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  </main>
+</Layout>
